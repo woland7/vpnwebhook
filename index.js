@@ -3,8 +3,7 @@ const express = require("express")
     , bodyParser = require("body-parser")
     , cookieParser = require("cookie-parser")
     , helpers = require("./helpers")
-    , account = require("./api/account")
-    , customer = require("./api/customer")
+    , webhook = require("./api/webhook")
     , app = express();
 
 app.use(helpers.rewriteSlash);
@@ -16,12 +15,11 @@ app.use(helpers.sessionMiddleware);
 app.use(morgan("dev", {}));
 
 /* Mount API endpoints */
-app.use(customer);
-app.use(account);
+app.use(webhook);
 
 app.use(helpers.errorHandler);
 
-const server = app.listen(process.env.PORT || 8079, function () {
+const server = app.listen(process.env.PORT || 8881, function () {
   const port = server.address().port;
   console.log("App now running in %s mode on port %d", app.get("env"), port);
 });
