@@ -3,3 +3,4 @@
 .pnp.js
 .yarnrc.yml
 package-lock.json
+node_modules
