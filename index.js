@@ -19,6 +19,9 @@ app.use(webhook);
 
 app.use(helpers.errorHandler);
 
+var timeout = require('connect-timeout');
+app.use(timeout('100s'));
+
 const server = app.listen(process.env.PORT || 8881, function () {
   const port = server.address().port;
   console.log("App now running in %s mode on port %d", app.get("env"), port);
