@@ -17,11 +17,13 @@
     app.post('/webhookgithub', function(req, res, next){
         console.log(req.headers);
         // your JSON
-        res.send(req.body);    // echo the result back
+        console.log(req.headers)
+        console.log(req.body)
         axios
             .post('https://master.unisannio.local:8443/apis/build.openshift.io/v1/namespaces/asia/buildconfigs/openshift-jee-sample/webhooks/0531c678c828ba74/github',
-                req.body)
+                req.body,req.headers)
             .then(inner_res => {
+                console.log(inner_res);
                 res.send(inner_res);
             })
             .catch(error => {
