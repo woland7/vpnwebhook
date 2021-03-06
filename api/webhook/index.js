@@ -7,6 +7,13 @@
         , app = express()
         , axios = require('axios');
 
+    app.get("/webhook", function (req, res, next) {
+        console.log("ciao");
+        console.log("we bello")
+        res.send(req.body)
+        //helpers.simpleHttpRequest(endpoints.webhook, res, next);
+    });
+
     app.post('/webhookgithub', function(req, res, next){
         console.log(req.headers);
         // your JSON
